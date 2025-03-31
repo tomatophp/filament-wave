@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Wave\\": "/src"
+            "Wave\\": "src"
         }
     },
     "autoload-dev": {
@@ -43,7 +43,6 @@
             ]
         }
     },
-    "minimum-stability": "stable",
     "scripts": {
         "testbench": "vendor/bin/testbench package:discover --ansi",
         "db": "vendor/bin/testbench package:create-sqlite-db && vendor/bin/testbench migrate",
@@ -82,7 +81,8 @@
         "tymon/jwt-auth": "^2.2",
         "tomatophp/filament-settings-hub": "^2.0",
         "tomatophp/filament-language-switcher": "^1.0",
-        "tomatophp/filament-menus": "^1.0"
+        "tomatophp/filament-menus": "^1.0",
+        "bezhansalleh/filament-shield": "^3.3"
     },
     "require-dev": {
         "laravel/pint": "^1.21",

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         if (! Schema::hasTable('users')) {
-            Schema::create('users', function (Blueprint $table) {
+            Schema::table('users', function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->string('name');
                 $table->string('email')->unique();
