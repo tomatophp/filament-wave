@@ -2,8 +2,6 @@
 
 namespace Wave\Filament\Resources;
 
-use Wave\Filament\Resources\PostResource\Pages;
-use Wave\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
@@ -11,8 +9,10 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
+use Wave\Filament\Resources\PostResource\Pages;
 use Wave\Models\Category;
 use Wave\Models\Post;
+use Wave\Models\User;
 
 class PostResource extends Resource
 {

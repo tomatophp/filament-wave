@@ -13,19 +13,19 @@ return new class extends Migration
     {
         if (Schema::hasTable('users')) {
             Schema::table('users', function (Blueprint $table) {
-                if (!Schema::hasColumn('users', 'avatar')) {
+                if (! Schema::hasColumn('users', 'avatar')) {
                     $table->string('avatar')->default('demo/default.png');
                 }
-                if (!Schema::hasColumn('users', 'username')) {
+                if (! Schema::hasColumn('users', 'username')) {
                     $table->string('username');
                 }
-                if (!Schema::hasColumn('users', 'trial_ends_at')) {
+                if (! Schema::hasColumn('users', 'trial_ends_at')) {
                     $table->dateTime('trial_ends_at')->nullable();
                 }
-                if (!Schema::hasColumn('users', 'verification_code')) {
+                if (! Schema::hasColumn('users', 'verification_code')) {
                     $table->string('verification_code')->nullable();
                 }
-                if (!Schema::hasColumn('users', 'verified')) {
+                if (! Schema::hasColumn('users', 'verified')) {
                     $table->tinyInteger('verified')->nullable();
                 }
             });

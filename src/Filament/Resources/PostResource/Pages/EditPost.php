@@ -2,9 +2,9 @@
 
 namespace Wave\Filament\Resources\PostResource\Pages;
 
-use Wave\Filament\Resources\PostResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
+use Wave\Filament\Resources\PostResource;
 
 class EditPost extends EditRecord
 {

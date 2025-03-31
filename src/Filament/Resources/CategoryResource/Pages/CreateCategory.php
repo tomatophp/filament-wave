@@ -2,8 +2,8 @@
 
 namespace Wave\Filament\Resources\CategoryResource\Pages;
 
-use Wave\Filament\Resources\CategoryResource;
 use Filament\Resources\Pages\CreateRecord;
+use Wave\Filament\Resources\CategoryResource;
 
 class CreateCategory extends CreateRecord
 {

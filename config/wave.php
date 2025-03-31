@@ -57,7 +57,7 @@ return [
         'themes' => \Wave\Models\Theme::class,
         'themes_options' => \Wave\Models\ThemeOptions::class,
         'translations' => \Wave\Models\Translation::class,
-        'posts' => \Wave\Models\Post::class
-    ]
+        'posts' => \Wave\Models\Post::class,
+    ],
 
 ];

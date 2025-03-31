@@ -2,9 +2,9 @@
 
 namespace Wave\Filament\Resources\PostResource\Pages;
 
-use Wave\Filament\Resources\PostResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
+use Wave\Filament\Resources\PostResource;
 
 class ListPosts extends ListRecords
 {

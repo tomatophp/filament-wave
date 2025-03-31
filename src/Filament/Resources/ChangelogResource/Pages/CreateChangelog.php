@@ -2,8 +2,8 @@
 
 namespace Wave\Filament\Resources\ChangelogResource\Pages;
 
-use Wave\Filament\Resources\ChangelogResource;
 use Filament\Resources\Pages\CreateRecord;
+use Wave\Filament\Resources\ChangelogResource;
 
 class CreateChangelog extends CreateRecord
 {

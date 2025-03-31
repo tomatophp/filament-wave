@@ -2,9 +2,9 @@
 
 namespace Wave\Filament\Resources\CategoryResource\Pages;
 
-use Wave\Filament\Resources\CategoryResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
+use Wave\Filament\Resources\CategoryResource;
 
 class ListCategories extends ListRecords
 {

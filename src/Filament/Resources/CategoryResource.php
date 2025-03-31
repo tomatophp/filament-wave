@@ -2,12 +2,12 @@
 
 namespace Wave\Filament\Resources;
 
-use Wave\Filament\Resources\CategoryResource\Pages;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Wave\Filament\Resources\CategoryResource\Pages;
 use Wave\Models\Category;
 
 class CategoryResource extends Resource

@@ -2,12 +2,12 @@
 
 namespace Wave\Filament\Resources;
 
-use Wave\Filament\Resources\ChangelogResource\Pages;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Wave\Filament\Resources\ChangelogResource\Pages;
 use Wave\Models\Changelog;
 
 class ChangelogResource extends Resource

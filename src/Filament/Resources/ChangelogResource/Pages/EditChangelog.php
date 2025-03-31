@@ -2,9 +2,9 @@
 
 namespace Wave\Filament\Resources\ChangelogResource\Pages;
 
-use Wave\Filament\Resources\ChangelogResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
+use Wave\Filament\Resources\ChangelogResource;
 
 class EditChangelog extends EditRecord
 {

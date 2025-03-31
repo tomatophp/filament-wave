@@ -2,9 +2,9 @@
 
 namespace Wave\Filament\Resources\ChangelogResource\Pages;
 
-use Wave\Filament\Resources\ChangelogResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
+use Wave\Filament\Resources\ChangelogResource;
 
 class ListChangelogs extends ListRecords
 {

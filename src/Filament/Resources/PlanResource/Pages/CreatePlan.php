@@ -2,8 +2,8 @@
 
 namespace Wave\Filament\Resources\PlanResource\Pages;
 
-use Wave\Filament\Resources\PlanResource;
 use Filament\Resources\Pages\CreateRecord;
+use Wave\Filament\Resources\PlanResource;
 
 class CreatePlan extends CreateRecord
 {

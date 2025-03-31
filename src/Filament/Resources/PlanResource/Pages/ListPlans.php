@@ -2,9 +2,9 @@
 
 namespace Wave\Filament\Resources\PlanResource\Pages;
 
-use Wave\Filament\Resources\PlanResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
+use Wave\Filament\Resources\PlanResource;
 
 class ListPlans extends ListRecords
 {
