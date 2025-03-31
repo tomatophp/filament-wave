@@ -15,6 +15,11 @@ Wave Kit with custom builder for TomatoPHP Plugins
 
 ## Installation
 
+
+> [!CAUTION]
+> Use it on a fresh Laravel 12 project and if you have a database take a backup before use this package.
+
+
 ```bash
 composer require tomatophp/filament-wave
 ```
