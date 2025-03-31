@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Wave\Models\Plan;
 
-trait IntertactsWithWave
+trait InteractsWithWave
 {
     public function onTrial()
     {

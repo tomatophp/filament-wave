@@ -17,7 +17,7 @@ class Themes extends Page
 
     protected static ?int $navigationSort = 8;
 
-    protected static string $view = 'filament.pages.themes';
+    protected static string $view = 'wave::filament.pages.themes';
 
     public function mount()
     {
@@ -77,17 +77,17 @@ class Themes extends Page
                 if (! isset($theme_exists->id)) {
                     $version = isset($theme->version) ? $theme->version : '';
                     Theme::create(['name' => $theme->name, 'folder' => $theme->folder, 'version' => $version]);
-                    if (config('themes.publish_assets', true)) {
-                        $this->publishAssets($theme->folder);
-                    }
+//                    if (config('themes.publish_assets', true)) {
+//                        $this->publishAssets($theme->folder);
+//                    }
                 } else {
                     // If it does exist, let's make sure it's been updated
                     $theme_exists->name = $theme->name;
                     $theme_exists->version = isset($theme->version) ? $theme->version : '';
                     $theme_exists->save();
-                    if (config('themes.publish_assets', true)) {
-                        $this->publishAssets($theme->folder);
-                    }
+//                    if (config('themes.publish_assets', true)) {
+//                        $this->publishAssets($theme->folder);
+//                    }
                 }
             }
         }

@@ -4,9 +4,12 @@ namespace Wave;
 
 use Filament\Support\Colors\Color;
 use Filament\Support\Facades\FilamentColor;
+use Illuminate\Auth\Middleware\RedirectIfAuthenticated;
 use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Foundation\AliasLoader;
+use Illuminate\Foundation\Http\Middleware\ValidateCsrfToken;
 use Illuminate\Foundation\Vite as BaseVite;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Blade;
@@ -185,6 +188,9 @@ class WaveServiceProvider extends ServiceProvider
 
             $this->publishes([
                 __DIR__ . '/../publish/public' => public_path(),
+                __DIR__ . '/../publish/app' => app_path(),
+                __DIR__ . '/../publish/config' => config_path(),
+                __DIR__ . '/../publish/storage' => storage_path(),
                 __DIR__ . '/../publish/resources' => resource_path(),
                 __DIR__ . '/../publish/postcss.config.js' => base_path('postcss.config.js'),
                 __DIR__ . '/../publish/tailwind.config.js' => base_path('tailwind.config.js'),
@@ -194,6 +200,12 @@ class WaveServiceProvider extends ServiceProvider
             ], 'wave-assets');
         }
 
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang');
+
+        $this->publishes([
+            __DIR__ . '/../publish/resources/lang' => resource_path('lang'),
+        ], 'wave-lang');
+
         Relation::morphMap([
             'user' => config('auth.providers.model'),
             'form' => \App\Models\Forms::class,
@@ -202,6 +214,22 @@ class WaveServiceProvider extends ServiceProvider
 
         $this->registerWaveFolioDirectory();
         $this->registerWaveComponentDirectory();
+
+
+
+        $this->app['router']->pushMiddlewareToGroup('web', \RalphJSmit\Livewire\Urls\Middleware\LivewireUrlsMiddleware::class);
+        $this->app['router']->pushMiddlewareToGroup('web', \Wave\Http\Middleware\LanguageMiddleware::class);
+
+        ValidateCsrfToken::except([
+            '/webhook/paddle',
+            '/webhook/stripe',
+        ]);
+
+        EncryptCookies::except([
+            'theme',
+        ]);
+
+        RedirectIfAuthenticated::redirectUsing(fn()=>'dashboard');
     }
 
     protected function loadHelpers()
@@ -270,7 +298,7 @@ class WaveServiceProvider extends ServiceProvider
 
     protected function registerWaveComponentDirectory()
     {
-        Blade::anonymousComponentPath(base_path('wave/resources/views/components'));
+        Blade::anonymousComponentPath(base_path('/resources/views/components'));
     }
 
     private function loadLivewireComponents()
