@@ -23,9 +23,6 @@ return new class extends Migration
             $table->text('meta_keywords')->nullable(); // TEXT column, nullable for the meta keywords
             $table->enum('status', ['ACTIVE', 'INACTIVE'])->default('INACTIVE'); // ENUM column for the status with a default value
             $table->timestamps(); // Adds created_at and updated_at columns
-
-            // Foreign key constraint
-            $table->foreign('author_id')->references('id')->on('users'); // Adjust if the users table or author_id column is named differently
         });
     }
 

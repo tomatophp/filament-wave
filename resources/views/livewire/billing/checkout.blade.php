@@ -19,7 +19,7 @@
         @loader-message.window="fullScreenLoaderMessage = event.detail.message"
         class="flex items-start justify-center w-full h-full rounded-xl">
         <div class="flex flex-col flex-wrap w-full mx-auto lg:max-w-4xl">
-            <x-billing.billing_cycle_toggle></x-billing.billing_cycle_toggle>
+            <x-wave::billing.billing_cycle_toggle></x-wave::billing.billing_cycle_toggle>
 
             <div class="h-full space-y-5">
                 @foreach($plans as $plan)
@@ -62,19 +62,19 @@
                                 <div class="flex items-center justify-end w-full">
                                     <div class="relative w-full md:w-auto">
                                         @if(config('wave.billing_provider') == 'stripe')
-                                            <x-billing.button wire:click="redirectToStripeCheckout('{{ $plan->id }}')" wire:target="redirectToPaymentProvider" rounded="md" color="{{ config('devdojo.billing.style.color') }}">
+                                            <x-wave::billing.button wire:click="redirectToStripeCheckout('{{ $plan->id }}')" wire:target="redirectToPaymentProvider" rounded="md" color="{{ config('devdojo.billing.style.color') }}">
                                                 {{ trans('circlexo.settings.subscription.subscribe') }}
-                                            </x-billing.button>
+                                            </x-wave::billing.button>
                                         @else
                                             @if($change)
 
                                                 <x-filament::modal width="lg" id="change-plan-modal">
                                                     <x-slot name="trigger">
                                                             @if($plan->id == $userPlan->id)
-                                                                <x-billing.button rounded="md" color="{{ config('devdojo.billing.style.color') }}" x-show="billing_cycle_selected == '{{ $userSubscription->cycle }}'">You are currently on this plan</x-billing.button>
-                                                                <x-billing.button rounded="md" color="{{ config('devdojo.billing.style.color') }}" x-show="billing_cycle_selected != '{{ $userSubscription->cycle }}'">Switch to this plan</x-billing.button>
+                                                                <x-wave::billing.button rounded="md" color="{{ config('devdojo.billing.style.color') }}" x-show="billing_cycle_selected == '{{ $userSubscription->cycle }}'">You are currently on this plan</x-wave::billing.button>
+                                                                <x-wave::billing.button rounded="md" color="{{ config('devdojo.billing.style.color') }}" x-show="billing_cycle_selected != '{{ $userSubscription->cycle }}'">Switch to this plan</x-wave::billing.button>
                                                             @else
-                                                                <x-billing.button rounded="md" color="{{ config('devdojo.billing.style.color') }}">Switch to this plan</x-billing.button>
+                                                                <x-wave::billing.button rounded="md" color="{{ config('devdojo.billing.style.color') }}">Switch to this plan</x-wave::billing.button>
                                                             @endif
                                                     </x-slot>
                                                     <div x-data class="relative flex flex-col items-center justify-center">
@@ -107,14 +107,14 @@
 
 
                                             @else
-                                                <x-billing.button x-on:click="
+                                                <x-wave::billing.button x-on:click="
                                                         if(billing_cycle_selected == 'month'){ openCheckout('{{ $plan->monthly_price_id }}'); }
                                                         if(billing_cycle_selected == 'year'){ openCheckout('{{ $plan->yearly_price_id }}'); }
                                                     "
                                                     rounded="md" color="{{ config('devdojo.billing.style.color') }}"
                                                 >
                                                     {{ trans('circlexo.settings.subscription.subscribe') }}
-                                                </x-billing.button>
+                                                </x-wave::billing.button>
                                             @endif
                                         @endif
                                     </div>

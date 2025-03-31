@@ -23,7 +23,7 @@ return new class extends Migration
         Schema::create('form_entries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('form_id')->constrained()->onDelete('cascade'); // Foreign key linking to the forms table
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Foreign key linking to the users table
+            $table->unsignedBigInteger('user_id'); // Foreign key linking to the users table
             $table->json('data'); // JSON column to store the form submission data
             $table->timestamps(); // Timestamps for created_at and updated_at
         });

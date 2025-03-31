@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Stripe\Checkout\Session;
-use Wave\Plan;
-use Wave\Subscription;
+use Wave\Models\Plan;
+use Wave\Models\Subscription;
 
 class StripeWebhook extends Controller
 {

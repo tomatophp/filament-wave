@@ -5,7 +5,7 @@ namespace Wave\Http\Controllers\Billing\Webhooks;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Wave\Subscription;
+use Wave\Models\Subscription;
 
 class PaddleWebhook extends Controller
 {

@@ -3,7 +3,7 @@
 namespace Wave\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Wave\Page;
+use Wave\Models\Page;
 
 class PageController extends Controller
 {

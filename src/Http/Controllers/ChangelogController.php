@@ -3,7 +3,7 @@
 namespace Wave\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Wave\Changelog;
+use Wave\Models\Changelog;
 
 class ChangelogController extends Controller
 {

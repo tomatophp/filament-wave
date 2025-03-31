@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
-use Wave\ApiKey;
+use Wave\Models\ApiKey;
 
 class AuthController extends Controller
 {

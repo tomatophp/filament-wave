@@ -2,7 +2,7 @@
 
 namespace Wave\Traits;
 
-use Wave\ProfileKeyValue;
+use Wave\Models\ProfileKeyValue;
 
 trait HasProfileKeyValues
 {

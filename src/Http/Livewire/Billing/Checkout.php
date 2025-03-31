@@ -8,8 +8,8 @@ use Livewire\Attributes\On;
 use Livewire\Component;
 use Stripe\StripeClient;
 use Wave\Actions\Billing\Paddle\AddSubscriptionIdFromTransaction;
-use Wave\Plan;
-use Wave\Subscription;
+use Wave\Models\Plan;
+use Wave\Models\Subscription;
 
 class Checkout extends Component
 {

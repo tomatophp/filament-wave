@@ -39,7 +39,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Wave\\WaveServiceProvider"
+                "Wave\\WaveServiceProvider",
+                "DevDojo\\Themes\\ThemesServiceProvider"
             ]
         }
     },

@@ -28,7 +28,6 @@ return new class extends Migration
             $table->timestamps(); // Adds created_at and updated_at columns
 
             // Foreign key constraints
-            $table->foreign('author_id')->references('id')->on('users'); // Adjust if the users table or author_id column is named differently
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null'); // Adjust if the categories table or category_id column is named differently
         });
     }

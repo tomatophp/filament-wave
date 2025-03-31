@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('web')->group(function () {
+    Route::get('/app/switcher', [\Wave\Http\Controllers\LanguageController::class, 'index'])->name('languages.user');
 
     // Additional Auth Routes
     Route::get('logout', '\Wave\Http\Controllers\LogoutController@logout')->name('wave.logout');
@@ -43,7 +44,7 @@ Route::middleware('web')->group(function () {
     try {
         if (App\Models\User::first()) {
             /***** Dynamic Page Routes *****/
-            foreach (Wave\Page::all() as $page) {
+            foreach (Wave\Models\Page::all() as $page) {
                 Route::view($page->slug, 'theme::page', ['page' => $page->toArray()])->name($page->slug);
             }
         }

@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use TCG\Voyager\Models\Role;
-use Wave\Plan;
-use Wave\Subscription;
-use Wave\User;
+use Wave\Models\Plan;
+use Wave\Models\Subscription;
+use Wave\Models\User;
 
 class SubscriptionController extends Controller
 {

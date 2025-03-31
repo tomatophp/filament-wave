@@ -6,7 +6,7 @@ use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 use Wave\Actions\Billing\Paddle\AddSubscriptionIdFromTransaction;
-use Wave\Subscription;
+use Wave\Models\Subscription;
 
 class Update extends Component
 {

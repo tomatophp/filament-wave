@@ -11,36 +11,38 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (! Schema::hasTable('users')) {
+        if (Schema::hasTable('users')) {
             Schema::table('users', function (Blueprint $table) {
-                $table->bigIncrements('id');
-                $table->string('name');
-                $table->string('email')->unique();
-                $table->string('avatar')->default('demo/default.png');
-                $table->timestamp('email_verified_at')->nullable();
-                $table->string('password');
-                $table->string('remember_token', 100)->nullable();
-                $table->timestamps();
-                $table->string('username')->unique();
-                $table->dateTime('trial_ends_at')->nullable();
-                $table->string('verification_code')->nullable();
-                $table->tinyInteger('verified')->nullable();
-            });
-        } else {
-            Schema::table('users', function (Blueprint $table) {
-                if (! Schema::hasColumn('users', 'avatar')) {
+                if (!Schema::hasColumn('users', 'avatar')) {
                     $table->string('avatar')->default('demo/default.png');
                 }
-                if (! Schema::hasColumn('users', 'username')) {
-                    $table->string('username')->unique();
+                if (!Schema::hasColumn('users', 'username')) {
+                    $table->string('username');
                 }
-                if (! Schema::hasColumn('users', 'trial_ends_at')) {
+                if (!Schema::hasColumn('users', 'trial_ends_at')) {
                     $table->dateTime('trial_ends_at')->nullable();
                 }
-                if (! Schema::hasColumn('users', 'verification_code')) {
+                if (!Schema::hasColumn('users', 'verification_code')) {
                     $table->string('verification_code')->nullable();
                 }
-                if (! Schema::hasColumn('users', 'verified')) {
+                if (!Schema::hasColumn('users', 'verified')) {
+                    $table->tinyInteger('verified')->nullable();
+                }
+            });
+        }
+
+        if (Schema::hasTable('accounts')) {
+            Schema::table('accounts', function (Blueprint $table) {
+                if (! Schema::hasColumn('accounts', 'avatar')) {
+                    $table->string('avatar')->default('demo/default.png');
+                }
+                if (! Schema::hasColumn('accounts', 'trial_ends_at')) {
+                    $table->dateTime('trial_ends_at')->nullable();
+                }
+                if (! Schema::hasColumn('accounts', 'verification_code')) {
+                    $table->string('verification_code')->nullable();
+                }
+                if (! Schema::hasColumn('accounts', 'verified')) {
                     $table->tinyInteger('verified')->nullable();
                 }
             });
@@ -53,6 +55,21 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        if (Schema::hasTable('accounts')) {
+            Schema::table('accounts', function (Blueprint $table) {
+                if (Schema::hasColumn('accounts', 'avatar')) {
+                    $table->dropColumn('avatar');
+                }
+                if (Schema::hasColumn('accounts', 'trial_ends_at')) {
+                    $table->dropColumn('trial_ends_at');
+                }
+                if (Schema::hasColumn('accounts', 'verification_code')) {
+                    $table->dropColumn('verification_code');
+                }
+                if (Schema::hasColumn('accounts', 'verified')) {
+                    $table->dropColumn('verified');
+                }
+            });
+        }
     }
 };

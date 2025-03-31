@@ -14,10 +14,16 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use Laravel\Folio\Folio;
 use Livewire\Livewire;
+use TomatoPHP\FilamentTypes\Facades\FilamentTypes;
+use TomatoPHP\FilamentTypes\Services\Contracts\Type;
+use TomatoPHP\FilamentTypes\Services\Contracts\TypeFor;
+use TomatoPHP\FilamentTypes\Services\Contracts\TypeOf;
 use Wave\Facades\Wave as WaveFacade;
 use Wave\Overrides\Vite;
 use Wave\Plugins\PluginServiceProvider;
@@ -57,10 +63,97 @@ class WaveServiceProvider extends ServiceProvider
 
         // Register the PluginServiceProvider
         $this->app->register(PluginServiceProvider::class);
+
+        $this->mergeConfigFrom(__DIR__.'/../config/wave.php', 'wave');
+        $this->mergeConfigFrom(__DIR__.'/../config/permission.php', 'permission');
+
+    }
+
+    private function setSchemaDefaultLength(): void
+    {
+        try {
+            Schema::defaultStringLength(191);
+        } catch (\Exception $exception) {
+        }
     }
 
     public function boot(Router $router, Dispatcher $event)
     {
+
+        if ($this->app->environment() == 'production') {
+            $this->app['request']->server->set('HTTPS', true);
+        }
+
+        $this->setSchemaDefaultLength();
+
+        Validator::extend('base64image', function ($attribute, $value, $parameters, $validator) {
+            $explode = explode(',', $value);
+            $allow = ['png', 'jpg', 'svg', 'jpeg'];
+            $format = str_replace(
+                [
+                    'data:image/',
+                    ';',
+                    'base64',
+                ],
+                [
+                    '', '', '',
+                ],
+                $explode[0]
+            );
+
+            // check file format
+            if (! in_array($format, $allow)) {
+                return false;
+            }
+
+            // check base64 format
+            if (! preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $explode[1])) {
+                return false;
+            }
+
+            return true;
+        });
+
+        FilamentTypes::register([
+            TypeFor::make('home')
+                ->label('Home Sections')
+                ->types([
+                    TypeOf::make('hero-section')
+                        ->label('Hero Section'),
+                    TypeOf::make('feature-section')
+                        ->label('Feature Section'),
+                    TypeOf::make('testimonials-section')
+                        ->label('Testimonials Section'),
+                ]),
+            TypeFor::make('dashboard')
+                ->label('Dashboard Sections')
+                ->types([
+                    TypeOf::make('widget')
+                        ->label('Dashboard Widgets'),
+                    TypeOf::make('sidebar-menu')
+                        ->label('Sidebar Menu')
+                        ->register([
+                            Type::make('https://docs.3x1.io/circlexo')
+                                ->name([
+                                    'ar' => 'طريقة الاستخدام',
+                                    'en' => 'Docs',
+                                ])
+                                ->icon('phosphor-book-bookmark-duotone'),
+                            Type::make('https://github.com/orgs/circlexo/discussions')
+                                ->name([
+                                    'ar' => 'الأسئلة الشائعة',
+                                    'en' => 'Questions',
+                                ])
+                                ->icon('phosphor-chat-duotone'),
+                            Type::make('https://github.com/orgs/circlexo/discussions')
+                                ->name([
+                                    'ar' => 'الأسئلة الشائعة',
+                                    'en' => 'Questions',
+                                ])
+                                ->icon('phosphor-chat-duotone'),
+                        ]),
+                ]),
+        ]);
 
         Relation::morphMap([
             'users' => config('wave.user_model'),
@@ -120,22 +213,22 @@ class WaveServiceProvider extends ServiceProvider
         // app()->afterResolving('blade.compiler', function (BladeCompiler $bladeCompiler) {
         // @admin directives
         Blade::if('admin', function () {
-            return ! auth()->guest() && auth()->user()->isAdmin();
+            return ! auth('accounts')->guest() && auth('accounts')->user()->isAdmin();
         });
 
         // @subscriber directives
         Blade::if('subscriber', function () {
-            return ! auth()->guest() && auth()->user()->subscriber();
+            return ! auth('accounts')->guest() && auth('accounts')->user()->subscriber();
         });
 
         // @notsubscriber directives
         Blade::if('notsubscriber', function () {
-            return ! auth()->guest() && ! auth()->user()->subscriber();
+            return ! auth('accounts')->guest() && ! auth('accounts')->user()->subscriber();
         });
 
         // Subscribed Directives
         Blade::if('subscribed', function ($plan) {
-            return ! auth()->guest() && auth()->user()->subscribedToPlan($plan);
+            return ! auth('accounts')->guest() && auth('accounts')->user()->subscribedToPlan($plan);
         });
 
         // home directives
