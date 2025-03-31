@@ -64,8 +64,8 @@ class WaveServiceProvider extends ServiceProvider
         // Register the PluginServiceProvider
         $this->app->register(PluginServiceProvider::class);
 
-        $this->mergeConfigFrom(__DIR__.'/../config/wave.php', 'wave');
-        $this->mergeConfigFrom(__DIR__.'/../config/permission.php', 'permission');
+        $this->mergeConfigFrom(__DIR__ . '/../config/wave.php', 'wave');
+        $this->mergeConfigFrom(__DIR__ . '/../config/permission.php', 'permission');
 
     }
 

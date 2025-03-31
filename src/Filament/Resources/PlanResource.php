@@ -2,7 +2,6 @@
 
 namespace Wave\Filament\Resources;
 
-use Wave\Filament\Resources\PlanResource\Pages;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
@@ -10,6 +9,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Spatie\Permission\Models\Role;
+use Wave\Filament\Resources\PlanResource\Pages;
 use Wave\Models\Plan;
 
 class PlanResource extends Resource

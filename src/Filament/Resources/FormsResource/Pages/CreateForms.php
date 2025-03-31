@@ -2,8 +2,8 @@
 
 namespace Wave\Filament\Resources\FormsResource\Pages;
 
-use Wave\Filament\Resources\FormsResource;
 use Filament\Resources\Pages\CreateRecord;
+use Wave\Filament\Resources\FormsResource;
 
 class CreateForms extends CreateRecord
 {

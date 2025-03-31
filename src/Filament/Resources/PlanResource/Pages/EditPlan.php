@@ -2,9 +2,9 @@
 
 namespace Wave\Filament\Resources\PlanResource\Pages;
 
-use Wave\Filament\Resources\PlanResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
+use Wave\Filament\Resources\PlanResource;
 
 class EditPlan extends EditRecord
 {

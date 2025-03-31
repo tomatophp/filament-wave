@@ -2,8 +2,6 @@
 
 namespace Wave\Filament\Resources;
 
-use Wave\Filament\Resources\FormsResource\Pages;
-use Wave\Models\Forms;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -16,6 +14,8 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
+use Wave\Filament\Resources\FormsResource\Pages;
+use Wave\Models\Forms;
 
 class FormsResource extends Resource
 {

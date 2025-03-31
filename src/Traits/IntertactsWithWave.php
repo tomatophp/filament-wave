@@ -5,14 +5,10 @@ namespace Wave\Traits;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Wave\Models\ApiKey;
-use Wave\Models\Changelog;
 use Wave\Models\Plan;
-use Wave\Models\Subscription;
 
 trait IntertactsWithWave
 {
-
     public function onTrial()
     {
         if (is_null($this->trial_ends_at)) {
@@ -177,7 +173,6 @@ trait IntertactsWithWave
         return ! $this->hasRole('admin');
     }
 
-
     public function link()
     {
         return url('/profile/' . $this->username);
@@ -202,6 +197,4 @@ trait IntertactsWithWave
     {
         return Storage::url($this->avatar);
     }
-
-
 }

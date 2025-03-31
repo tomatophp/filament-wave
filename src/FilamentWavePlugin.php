@@ -12,9 +12,9 @@ use TomatoPHP\FilamentMenus\FilamentMenusPlugin;
 use TomatoPHP\FilamentSettingsHub\FilamentSettingsHubPlugin;
 use TomatoPHP\FilamentTypes\FilamentTypesPlugin;
 use TomatoPHP\FilamentUsers\FilamentUsersPlugin;
-use Wave\Filament\Widgets;
 use Wave\Filament\Pages;
 use Wave\Filament\Resources;
+use Wave\Filament\Widgets;
 
 class FilamentWavePlugin implements Plugin
 {
