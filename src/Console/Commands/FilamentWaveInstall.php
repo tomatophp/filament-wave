@@ -17,14 +17,13 @@ class FilamentWaveInstall extends Command
 
     protected $description = 'Install Filament Wave';
 
-
     public function handle()
     {
-        $this->publish = __DIR__.'/../../../publish/';
+        $this->publish = __DIR__ . '/../../../publish/';
 
         $fileExists = File::files(database_path('/migrations/'));
-        foreach ($fileExists as $item){
-            if(str($item)->contains('sites_settings')){
+        foreach ($fileExists as $item) {
+            if (str($item)->contains('sites_settings')) {
                 File::delete($item->getPathname());
             }
         }
