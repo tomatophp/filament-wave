@@ -184,13 +184,13 @@ class WaveServiceProvider extends ServiceProvider
             // $this->excludeInactiveThemes();
 
             $this->publishes([
-                __DIR__.'/../publish/public' => public_path(),
-                __DIR__.'/../publish/resources' => resource_path(),
-                __DIR__.'/../publish/postcss.config.js' => base_path('postcss.config.js'),
-                __DIR__.'/../publish/tailwind.config.js' => base_path('tailwind.config.js'),
-                __DIR__.'/../publish/theme.json' => base_path('theme.json'),
-                __DIR__.'/../publish/vite.config.js' => base_path('vite.config.js'),
-                __DIR__.'/../publish/package.json' => base_path('package.json'),
+                __DIR__ . '/../publish/public' => public_path(),
+                __DIR__ . '/../publish/resources' => resource_path(),
+                __DIR__ . '/../publish/postcss.config.js' => base_path('postcss.config.js'),
+                __DIR__ . '/../publish/tailwind.config.js' => base_path('tailwind.config.js'),
+                __DIR__ . '/../publish/theme.json' => base_path('theme.json'),
+                __DIR__ . '/../publish/vite.config.js' => base_path('vite.config.js'),
+                __DIR__ . '/../publish/package.json' => base_path('package.json'),
             ], 'wave-assets');
         }
 
