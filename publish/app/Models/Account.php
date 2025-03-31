@@ -37,11 +37,11 @@ use Wave\Traits\InteractsWithWave;
 class Account extends Authenticatable implements HasAvatar, HasMedia, JWTSubject
 {
     use HasFactory;
+    use HasRoles;
     use InteractsWithMedia;
+    use InteractsWithWave;
     use Notifiable;
     use SoftDeletes;
-    use HasRoles;
-    use InteractsWithWave;
 
     /**
      * @var array

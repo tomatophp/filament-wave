@@ -215,8 +215,6 @@ class WaveServiceProvider extends ServiceProvider
         $this->registerWaveFolioDirectory();
         $this->registerWaveComponentDirectory();
 
-
-
         $this->app['router']->pushMiddlewareToGroup('web', \RalphJSmit\Livewire\Urls\Middleware\LivewireUrlsMiddleware::class);
         $this->app['router']->pushMiddlewareToGroup('web', \Wave\Http\Middleware\LanguageMiddleware::class);
 
@@ -229,7 +227,7 @@ class WaveServiceProvider extends ServiceProvider
             'theme',
         ]);
 
-        RedirectIfAuthenticated::redirectUsing(fn()=>'dashboard');
+        RedirectIfAuthenticated::redirectUsing(fn () => 'dashboard');
     }
 
     protected function loadHelpers()
