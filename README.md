@@ -19,10 +19,60 @@ Wave Kit with custom builder for TomatoPHP Plugins
 composer require tomatophp/filament-wave
 ```
 
-after install your package please run this command
+after install you need to add `HasRoles` to your `User.php` model like this
+
+```php
+use Spatie\Permission\Traits\HasRoles;
+
+class User extends Authenticatable
+{
+    /** @use HasFactory<\Database\Factories\UserFactory> */
+    use HasFactory, Notifiable;
+    use HasRoles;
+}
+```
+
+and on your `routes/web.php` add this line and remove all other routes
+
+```php
+\Wave\Facades\Wave::routes();
+```
+
+and on your `config/auth.php` we need to add `accounts` guard like this
+
+```php
+'guards' => [
+    'web' => [
+        'driver' => 'session',
+        'provider' => 'users',
+    ],
+    'accounts' => [
+        'driver' => 'session',
+        'provider' => 'accounts',
+    ],
+],
+
+'providers' => [
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => env('AUTH_MODEL', App\Models\User::class),
+    ],
+    'accounts' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Account::class,
+    ],
+]
+```
+
+then you can run this command
 
 ```bash
+php artisan config:cache
+php artisan filament:install --panels
 php artisan filament-wave:install
+npm i
+npm run build
+php artisan optimize
 ```
 
 if you are not using this package as a plugin please register the plugin on `/app/Providers/Filament/AdminPanelProvider.php`
@@ -30,7 +80,6 @@ if you are not using this package as a plugin please register the plugin on `/ap
 ```php
 ->plugin(\Wave\FilamentWavePlugin::make())
 ```
-
 
 
 ## Testing
