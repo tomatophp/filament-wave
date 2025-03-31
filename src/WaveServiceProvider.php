@@ -24,6 +24,7 @@ use TomatoPHP\FilamentTypes\Facades\FilamentTypes;
 use TomatoPHP\FilamentTypes\Services\Contracts\Type;
 use TomatoPHP\FilamentTypes\Services\Contracts\TypeFor;
 use TomatoPHP\FilamentTypes\Services\Contracts\TypeOf;
+use Wave\Console\Commands\FilamentWaveInstall;
 use Wave\Facades\Wave as WaveFacade;
 use Wave\Overrides\Vite;
 use Wave\Plugins\PluginServiceProvider;
@@ -32,7 +33,6 @@ class WaveServiceProvider extends ServiceProvider
 {
     public function register()
     {
-
         $loader = AliasLoader::getInstance();
         $loader->alias('Wave', WaveFacade::class);
 
@@ -177,10 +177,21 @@ class WaveServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
+                FilamentWaveInstall::class,
                 \Wave\Console\Commands\CancelExpiredSubscriptions::class,
                 \Wave\Console\Commands\CreatePluginCommand::class,
             ]);
             // $this->excludeInactiveThemes();
+
+            $this->publishes([
+                __DIR__.'/../publish/public' => public_path(),
+                __DIR__.'/../publish/resources' => resource_path(),
+                __DIR__.'/../publish/postcss.config.js' => base_path('postcss.config.js'),
+                __DIR__.'/../publish/tailwind.config.js' => base_path('tailwind.config.js'),
+                __DIR__.'/../publish/theme.json' => base_path('theme.json'),
+                __DIR__.'/../publish/vite.config.js' => base_path('vite.config.js'),
+                __DIR__.'/../publish/package.json' => base_path('package.json'),
+            ], 'wave-assets');
         }
 
         Relation::morphMap([

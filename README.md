@@ -13,6 +13,26 @@ Wave Kit with custom builder for TomatoPHP Plugins
 ![Wave Kit Light](https://raw.githubusercontent.com/tomatophp/filament-wave/master/arts/light.png)
 ![Wave Kit Dark](https://raw.githubusercontent.com/tomatophp/filament-wave/master/arts/dark.png)
 
+## Installation
+
+```bash
+composer require tomatophp/filament-wave
+```
+
+after install your package please run this command
+
+```bash
+php artisan filament-wave:install
+```
+
+if you are not using this package as a plugin please register the plugin on `/app/Providers/Filament/AdminPanelProvider.php`
+
+```php
+->plugin(\Wave\FilamentWavePlugin::make())
+```
+
+
+
 ## Testing
 
 if you like to run `PEST` testing just use this command
