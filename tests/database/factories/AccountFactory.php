@@ -1,10 +1,10 @@
 <?php
 
-namespace TomatoPHP\FilamentAccounts\Tests\Database\Factories;
+namespace Wave\Tests\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
-use TomatoPHP\FilamentAccounts\Tests\Models\Account;
+use Wave\Tests\Models\Account;
 
 class AccountFactory extends Factory
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace TomatoPHP\FilamentAccounts\Tests;
+namespace Wave\Tests;
 
 use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
@@ -14,18 +14,21 @@ use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\LivewireServiceProvider;
-use Maatwebsite\Excel\ExcelServiceProvider;
+use Orchestra\Testbench\Attributes\WithEnv;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
 use Spatie\MediaLibrary\MediaLibraryServiceProvider;
 use TomatoPHP\FilamentAccounts\FilamentAccountsServiceProvider;
 use TomatoPHP\FilamentTypes\FilamentTypesServiceProvider;
+use Wave\Tests\Models\User;
+use Wave\WaveServiceProvider;
 
+#[WithEnv('DB_CONNECTION', 'testing')]
 abstract class TestCase extends BaseTestCase
 {
-    use WithWorkbench;
     use RefreshDatabase;
+    use WithWorkbench;
 
     protected function getPackageProviders($app): array
     {
@@ -43,10 +46,10 @@ abstract class TestCase extends BaseTestCase
             TablesServiceProvider::class,
             WidgetsServiceProvider::class,
             MediaLibraryServiceProvider::class,
-            ExcelServiceProvider::class,
             FilamentTypesServiceProvider::class,
             FilamentAccountsServiceProvider::class,
             AdminPanelProvider::class,
+            WaveServiceProvider::class,
         ];
     }
 
@@ -57,9 +60,12 @@ abstract class TestCase extends BaseTestCase
 
     public function getEnvironmentSetUp($app): void
     {
-        $app['config']->set('filament-accounts.simple', false);
-        $app['config']->set('database.default', 'sqlite');
-        $app['config']->set('database.connections.sqlite.database', __DIR__ . '/../database/database.sqlite');
+
+        $app['config']->set('database.default', 'testing');
+        $app['config']->set('auth.guards.testing.driver', 'session');
+        $app['config']->set('auth.guards.testing.provider', 'testing');
+        $app['config']->set('auth.providers.testing.driver', 'eloquent');
+        $app['config']->set('auth.providers.testing.model', User::class);
 
         $app['config']->set('view.paths', [
             ...$app['config']->get('view.paths'),

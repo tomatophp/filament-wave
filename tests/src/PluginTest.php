@@ -1,26 +1,25 @@
 <?php
 
 use Filament\Facades\Filament;
-use TomatoPHP\FilamentAccounts\FilamentAccountsPlugin;
 
-it('registers plugin', function () {
-    $panel = Filament::getCurrentPanel();
+// it('registers plugin', function () {
+//    $panel = Filament::getCurrentPanel();
+//
+//    $panel->plugins([
+//        FilamentAccountsPlugin::make(),
+//    ]);
+//
+//    expect($panel->getPlugin('filament-accounts'))
+//        ->not()
+//        ->toThrow(Exception::class);
+// });
 
-    $panel->plugins([
-        FilamentAccountsPlugin::make(),
-    ]);
-
-    expect($panel->getPlugin('filament-accounts'))
-        ->not()
-        ->toThrow(Exception::class);
-});
-
-//it('can modify avatar', function ($condition) {
+// it('can modify avatar', function ($condition) {
 //    $plugin = FilamentAccountsPlugin::make()
 //        ->useAvatar($condition);
 //
 //    expect($plugin::hasAvatar())->toBe($condition);
-//})->with([
+// })->with([
 //    false,
 //    fn () => true,
-//]);
+// ]);

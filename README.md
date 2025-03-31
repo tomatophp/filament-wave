@@ -8,6 +8,11 @@
 
 Wave Kit with custom builder for TomatoPHP Plugins
 
+## Screenshots
+
+![Wave Kit Light](https://raw.githubusercontent.com/tomatophp/filament-wave/master/arts/light.png)
+![Wave Kit Dark](https://raw.githubusercontent.com/tomatophp/filament-wave/master/arts/dark.png)
+
 ## Testing
 
 if you like to run `PEST` testing just use this command

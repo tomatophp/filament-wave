@@ -15,6 +15,17 @@
         "issues": "https://devdojo.com/forums",
         "source": "https://wave.devdojo.com"
     },
+    "autoload": {
+        "psr-4": {
+            "Wave\\": "/src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Wave\\Tests\\": "tests/src",
+            "Wave\\Tests\\Database\\Factories\\": "tests/database/factories"
+        }
+    },
     "authors": [
         {
             "name": "Tony Lea",
@@ -25,18 +36,6 @@
             "email": "info@3x1.io"
         }
     ],
-    "autoload": {
-        "psr-4": {
-            "Wave\\": "/src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Wave\\Tests\\": "tests/src/",
-            "Wave\\Tests\\Database\\Factories\\": "tests/database/factories"
-        }
-    },
-    "minimum-stability": "stable",
     "extra": {
         "laravel": {
             "providers": [
@@ -44,8 +43,10 @@
             ]
         }
     },
+    "minimum-stability": "stable",
     "scripts": {
         "testbench": "vendor/bin/testbench package:discover --ansi",
+        "db": "vendor/bin/testbench package:create-sqlite-db && vendor/bin/testbench migrate",
         "analyse": "vendor/bin/phpstan analyse src tests",
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage",
@@ -59,15 +60,32 @@
         }
     },
     "require": {
-        "php": "^8.1|^8.2",
+        "php": "^8.2|^8.3|^8.4",
+        "ext-exif": "*",
+        "ext-gd": "*",
         "filament/filament": "^3.3",
         "filament/notifications": "^3.3",
         "filament/spatie-laravel-media-library-plugin": "^3.3",
-        "tomatophp/filament-types": "^2.0"
+        "tomatophp/filament-types": "^2.0",
+        "tomatophp/filament-users": "^2.0",
+        "tomatophp/filament-accounts": "^2.3",
+        "devdojo/app": "0.11.0",
+        "devdojo/themes": "0.0.11",
+        "codeat3/blade-phosphor-icons": "^2.3",
+        "livewire/livewire": "^3.6",
+        "livewire/volt": "^1.6.7",
+        "mallardduck/blade-boxicons": "^2.4",
+        "psr/simple-cache": "^3.0",
+        "ralphjsmit/livewire-urls": "^1.5",
+        "stripe/stripe-php": "^16.6",
+        "tomatophp/filament-accounts-auth": "^1.0",
+        "tymon/jwt-auth": "^2.2",
+        "tomatophp/filament-settings-hub": "^2.0",
+        "tomatophp/filament-language-switcher": "^1.0",
+        "tomatophp/filament-menus": "^1.0"
     },
     "require-dev": {
         "laravel/pint": "^1.21",
-        "livewire/livewire": "^2.10|^3.0",
         "nunomaduro/larastan": "^3.1",
         "orchestra/testbench": "^10.0",
         "pestphp/pest": "^3.7",

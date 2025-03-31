@@ -11,7 +11,9 @@ providers:
   - Filament\Widgets\WidgetsServiceProvider
   - RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider
   - TomatoPHP\FilamentUsers\FilamentUsersServiceProvider
-  - TomatoPHP\FilamentUsers\Tests\AdminPanelProvider
+  - TomatoPHP\FilamentAccounts\FilamentAccountsServiceProvider
+  - Wave\Tests\AdminPanelProvider
+  - Wave\WaveServiceProvider
 seeders:
   - TomatoPHP\FilamentUsers\Tests\Database\Seeders\DatabaseSeeder
 workbench:
