@@ -24,7 +24,7 @@ Wave Kit with custom builder for TomatoPHP Plugins
 composer require tomatophp/filament-wave
 ```
 
-after install you need to add `HasRoles` to your `User.php` model like this
+after install you need to add `HasRoles` to your `User.php` model and add `isAdmin()` fn like this
 
 ```php
 use Spatie\Permission\Traits\HasRoles;
@@ -34,6 +34,11 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
     use HasRoles;
+
+    public function isAdmin(): bool
+    {
+        return true;
+    }
 }
 ```
 
@@ -73,6 +78,7 @@ then you can run this command
 
 ```bash
 php artisan config:cache
+php artisan notifications:table
 php artisan filament:install --panels
 php artisan filament-wave:install
 npm i
@@ -86,6 +92,11 @@ if you are not using this package as a plugin please register the plugin on `/ap
 ->plugin(\Wave\FilamentWavePlugin::make())
 ```
 
+now you need to optimize the views
+
+```bash
+php artisan optimize
+```
 
 ## Testing
 
