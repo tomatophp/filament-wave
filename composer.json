@@ -67,6 +67,7 @@
         "filament/notifications": "^3.3",
         "filament/spatie-laravel-media-library-plugin": "^3.3",
         "tomatophp/filament-types": "^2.0",
+        "tomatophp/console-helpers": "^1.1",
         "tomatophp/filament-users": "^2.0",
         "tomatophp/filament-accounts": "^2.3",
         "devdojo/app": "0.11.0",
