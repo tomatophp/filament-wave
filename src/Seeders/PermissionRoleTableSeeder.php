@@ -13,6 +13,6 @@ class PermissionRoleTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('role_has_permissions')->truncate();
+        \DB::table('role_has_permissions')->delete();
     }
 }
