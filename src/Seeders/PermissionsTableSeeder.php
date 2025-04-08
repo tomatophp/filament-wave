@@ -13,6 +13,6 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('permissions')->truncate();
+        \DB::table('permissions')->delete();
     }
 }
