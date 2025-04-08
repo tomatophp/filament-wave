@@ -14,7 +14,7 @@ class PagesTableSeeder extends Seeder
     public function run()
     {
 
-        \DB::table('pages')->truncate();
+        \DB::table('pages')->delete();
 
         \DB::table('pages')->insert([
             0 => [
