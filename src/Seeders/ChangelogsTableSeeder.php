@@ -14,7 +14,7 @@ class ChangelogsTableSeeder extends Seeder
     public function run()
     {
 
-        \DB::table('changelogs')->truncate();
+        \DB::table('changelogs')->delete();
 
         \DB::table('changelogs')->insert([
             0 => [
