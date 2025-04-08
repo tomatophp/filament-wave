@@ -14,7 +14,7 @@ class ThemesTableSeeder extends Seeder
     public function run()
     {
 
-        \DB::table('themes')->truncate();
+        \DB::table('themes')->delete();
 
         \DB::table('themes')->insert([
             0 => [
