@@ -14,7 +14,7 @@ class ProfileKeyValuesTableSeeder extends Seeder
     public function run()
     {
 
-        \DB::table('profile_key_values')->truncate();
+        \DB::table('profile_key_values')->delete();
 
         \DB::table('profile_key_values')->insert([
             0 => [
