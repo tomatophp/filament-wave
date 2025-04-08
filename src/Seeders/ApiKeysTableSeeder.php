@@ -14,7 +14,7 @@ class ApiKeysTableSeeder extends Seeder
     public function run()
     {
 
-        \DB::table('api_keys')->truncate();
+        \DB::table('api_keys')->delete();
 
     }
 }
