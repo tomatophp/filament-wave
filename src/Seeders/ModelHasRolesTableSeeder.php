@@ -14,7 +14,7 @@ class ModelHasRolesTableSeeder extends Seeder
     public function run()
     {
 
-        \DB::table('model_has_roles')->truncate();
+        \DB::table('model_has_roles')->delete();
 
         \DB::table('model_has_roles')->insert([
             0 => [
